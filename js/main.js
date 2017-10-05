@@ -1,7 +1,7 @@
 var db = [
   {name: 'Semicolon Simo', email: 'Semicolon@gmail.com', age:15},
-  {name: 'Bart Kwan', email: 'BartyFarty@gmail.com', age:25},
-  {name: 'Jay Kay', email: 'JK@gmail.com', age:10}
+  {name: 'Ali Omar', email: 'BartyFarty@gmail.com', age:17},
+  {name: 'Nizar malik', email: 'JK@gmail.com', age:20}
 
 ]; //Creating the database
 
