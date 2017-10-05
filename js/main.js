@@ -16,7 +16,7 @@ var db = [
     for(var i=0; i<db.length; i++){
        template +='<div class="col-sm-4"> ';
        template +='<div class="card"> ';
-       template +='<div class="card-delete" data-card="">X</div> ';
+       template +='<div class="card-delete" data-card="'+ i +'">X</div> ';
        template +='<div  ';
        template +='class="card-block"> ';
        template +='<h3 class="card-title">'+db[i].name+'</h3> ';
@@ -28,6 +28,7 @@ var db = [
     }
     parent.innerHTML="";
     parent.insertAdjacentHTML('afterbegin',template);
+    deleteCard();
 
   };
   this.enterUser = function(){
@@ -71,5 +72,25 @@ var db = [
       }
     } return true;
   };
+
+this.deleteCard = function (){
+  var buttons = document.querySelectorAll('.card-delete');
+
+  function deleteThis(element){
+    var obj = parseInt(element.getAttribute('data-card'));
+    db.splice(obj,1);
+    generateList();
+
+  }
+
+  for(var i=0;i<buttons.length;i++){
+    buttons[i].addEventListener('click',function(e){
+    deleteThis(this)
+
+
+});
+  }
+};
+
   this.init();
 }) (db);
