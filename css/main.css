@@ -30,3 +30,7 @@
   color: #f44336;
   cursor: pointer;
 }
+
+#error{
+  display: none;
+}

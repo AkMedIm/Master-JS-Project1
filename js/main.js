@@ -3,7 +3,8 @@ var db = [
   {name: 'Bart Kwan', email: 'BartyFarty@gmail.com', age:25},
   {name: 'Jay Kay', email: 'JK@gmail.com', age:10}
 
-];
+]; //Creating the database
+
 (function Avatars(db){
   this.init=function(){
     this.generateList();
@@ -35,9 +36,26 @@ var db = [
       var name = document.querySelector('#user_name').value;
       var email = document.querySelector('#user_email').value;
       var age = document.querySelector('#user_age').value;
-      document.querySelector('#myForm').reset();
-      db.push({name:name,email:email,age:age});
-      generateList();
+
+
+      var elements=[name,email,age];
+
+      if(validateUser(elements)){
+        document.querySelector('#myForm').reset();
+        db.push({name:name,email:email,age:age});
+        generateList();
+
+      } else{
+          //show the error
+          // hide the error after 5 secs
+          document.querySelector('#error').style.display='block';
+          setTimeout(function(){
+            document.querySelector('#error').style.display='none';
+          },2000)
+      }
+
+
+
 
     }
 
@@ -45,6 +63,13 @@ var db = [
       e.preventDefault();
        grabUser();
     });
+  };
+  this.validateUser = function (inputs){
+    for(var i=0 ; i < inputs.length ; i++){
+      if(inputs[i]==""){
+        return false;
+      }
+    } return true;
   };
   this.init();
 }) (db);
