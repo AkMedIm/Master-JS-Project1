@@ -7,6 +7,7 @@ var db = [
 (function Avatars(db){
   this.init=function(){
     this.generateList();
+    this.enterUser();
   }
   this.generateList = function(){
     var parent = document.querySelector('#parent_avatars');
@@ -24,9 +25,26 @@ var db = [
        template +='</div> ';
        template +='    </div>';
     }
-    parent.innerHtml=''
+    parent.innerHTML="";
     parent.insertAdjacentHTML('afterbegin',template);
 
-  }
+  };
+  this.enterUser = function(){
+
+    function grabUser(){
+      var name = document.querySelector('#user_name').value;
+      var email = document.querySelector('#user_email').value;
+      var age = document.querySelector('#user_age').value;
+      document.querySelector('#myForm').reset();
+      db.push({name:name,email:email,age:age});
+      generateList();
+
+    }
+
+    document.querySelector('#myForm').addEventListener('submit',function(e){
+      e.preventDefault();
+       grabUser();
+    });
+  };
   this.init();
 }) (db);
